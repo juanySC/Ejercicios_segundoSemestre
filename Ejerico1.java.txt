@@ -1,0 +1,45 @@
+package org.example;
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+
+    //como accedo  a la clase scope
+
+        System.out.println(scope.contadorPublico);
+
+        //Ejercicio 1
+        /*Escribir un programa que pregunte la temperatura y que totme una decision de encender el aire
+        * acondicionado si la temperatura es mayor a 30 grados*/
+        Scanner sc = new Scanner(System.in);
+        double temp;
+        String continuar;
+
+        do{
+            System.out.println("Ingrese la temperatura: ");
+            temp = sc.nextDouble();
+            sc.nextLine(); //para que ejecute el programa
+
+            if(temp >30 ){
+                System.out.println("Esta encendido");
+            }else{
+                System.out.println("Apagado");
+            }
+
+            //le pregunto al usuario si desea repetir el programa
+            System.out.println("Desea repetir el programa? ");
+            continuar = sc.nextLine();
+        }while (continuar.equalsIgnoreCase("s"));
+
+
+        sc.close();
+
+        //solucion
+
+
+
+
+    }
+}
