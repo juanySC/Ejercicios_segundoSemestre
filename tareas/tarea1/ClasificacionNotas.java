@@ -35,5 +35,7 @@ public class ClasificacionNotas{
             continuarUsuario = sc.nextLine();
         } while (continuarUsuario.equalsIgnoreCase("s"));
         
+        sc.close();
+        System.out.println("Gracias por usar el programa");       
     }
 }
