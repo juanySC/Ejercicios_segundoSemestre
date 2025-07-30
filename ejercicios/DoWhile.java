@@ -11,7 +11,7 @@ public class DoWhile {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String continuarUsuario;
-        int opcion;
+        int opcion, response = 0;
 
         System.out.println("\nEste programa le pregunta que desea ver");
 
@@ -49,5 +49,31 @@ public class DoWhile {
         sc.close();
         System.out.println("\nGracias por usar el programa");
 
+        //otra soluciones
+        do{
+            System.out.println("\n1. Ver pelicula");
+            System.out.println("2. Ver serie");
+            System.out.println("3. Salir");
+            System.out.println("Ingrese un número para saber que desea ver: ");
+
+            response = Integer.parseInt(sc.nextLine());
+
+            switch (response){
+                case 0:
+                    System.out.println("Gracias por usar el programa");
+                    break;
+                case 1:
+                    System.out.println("Peliculas");
+                    break;
+                case 2:
+                    System.out.println("seies");
+                    break;
+                default:
+                    System.out.println("Esta opcion no esta disponible");
+            }
+        }while(response != 0);
+
     }
+
+
 }
