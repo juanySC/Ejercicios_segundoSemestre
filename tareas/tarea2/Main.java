@@ -12,6 +12,12 @@ import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    /**
+     * tarifaElctrica hace una comparacion del consumo de KWh para saber cuanto sera el
+     * porcentaje que hay que cobrarle al usuario
+     * antes de clasificarlo en los distintos tipos que existen
+     * @param KWh  recibe un numero en esta unidad para clasificarla segun el consumo
+     * **/
     public static double tarifaElectrica(double KWh){
         double tarifa =0 ;
         //hare la estructura para los distintos consumos mensuales

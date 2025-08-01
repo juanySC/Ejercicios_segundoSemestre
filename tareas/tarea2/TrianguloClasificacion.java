@@ -7,6 +7,14 @@ import java.util.Scanner;
 
 public class TrianguloClasificacion {
 
+    /**
+     * esTriangulo ayuda a identificar si cumple con las caracteristicas de un triangulo
+     * antes de clasificarlo en los distintos tipos que existen
+     * @param lado1  dato numerico que ayuda a identificar uno de los lados de la figura
+     * @param lado2  dato numerico que ayuda a identificar uno de los lados de la figura
+     * @param lado3  dato numerico que ayuda a identificar uno de los lados de la figura
+     * **/
+
     public static boolean esTriangulo(double lado1, double lado2, double lado3){
         /*La suma de dos lados debe ser mayor que el tercero.
           Ejemplo: 3, 4, 5 sí forman un triángulo.
@@ -14,6 +22,13 @@ public class TrianguloClasificacion {
         return ((lado1 + lado2 > lado3) && (lado2 + lado3 > lado1) && (lado1 + lado3 > lado2));
     }
 
+    /**
+     * tipoTriangulo ayuda a identificar que tipo de triangulo es dependiendo de las
+     * caracteristicas
+     * @param lado1  dato numerico que ayuda a identificar el tipo de triangulo
+     * @param lado2  dato numerico que ayuda a identificar el tipo de triangulo
+     * @param lado3  dato numerico que ayuda a identificar el tipo de triangulo
+     * **/
     public static String tipoTriangulo(double lado1, double lado2, double lado3){
         if((lado1 == lado2) && (lado1 == lado3)){
             return "---triangulo equilatero---";
