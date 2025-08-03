@@ -13,6 +13,7 @@ public class AdivinaNumero {
         int numeroSecreto = (int)(Math.random() * 100) + 1;
         int intento = 5, numero;
 
+        //repito el ciclo hasta llegar a los 5 intentos mientras el numero no acerte
         do{
             System.out.println("Ingresa el número: ");
             numero = sc.nextInt();
@@ -22,10 +23,12 @@ public class AdivinaNumero {
             if(numero == numeroSecreto){
                 System.out.println("Acertaste! el numero era :" + numeroSecreto);
             } else if (numero > numeroSecreto) {
-                System.out.println("Pista: el número tiene que ser menor");
-            } else if(numero < numeroSecreto){
-                System.out.println("Pista: el número tiene que ser mayor");
-            } else {
+                int margen = 10;
+                int min = Math.max(1, numeroSecreto - margen);
+                int max = Math.min(100, numeroSecreto + margen);
+                System.out.println("Pista: el número esta entre "+min+" y "+max);
+
+            } else{
                 System.out.println("Terminaste tus intentos! suerte para la proxima");
             }
 
