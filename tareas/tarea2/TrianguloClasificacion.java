@@ -40,6 +40,31 @@ public class TrianguloClasificacion {
 
     }
 
+    /**esRectangulo nos ayuda a identificar si cumplen con un angulo de 90 grados
+     * @param lado1  dato numerico que ayuda a identificar el lado del triangulo
+     * @param lado2  dato numerico que ayuda a identificar el lado del triangulo
+     * @param lado3  dato numerico que ayuda a identificar el lado del triangulo**/
+    public static boolean esRectangulo(double lado1, double lado2, double lado3) {
+        // Ordenamos los lados (asumiendo que c es el mayor, puedes ordenarlos si prefieres)
+        double hip, cat1, cat2;
+        // Encontramos el mayor
+        if (lado1 > lado2 && lado1 > lado3) {
+            hip = lado1;
+            cat1 = lado2;
+            cat2 = lado3;
+        } else if (lado2 > lado1 && lado2 > lado3) {
+            hip = lado2;
+            cat1 = lado1;
+            cat2 = lado3;
+        } else {
+            hip = lado3;
+            cat1 = lado1;
+            cat2 = lado2;
+        }
+
+        // se verifica el teorema de pitagoras
+        return Math.abs((cat1 * cat1 + cat2 * cat2) - (hip * hip)) < 0.0001;
+    }
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -65,6 +90,11 @@ public class TrianguloClasificacion {
             if(verificacion){
                 System.out.println("\nLos lados que ingreso cumplen con un triagunlo");
                 System.out.println("El tipo de triangulo es: "+tiposTri);
+
+                //verifico si es rectangulo
+                if (esRectangulo(ladoA, ladoB, ladoC)) {
+                    System.out.println("Es un triángulo rectángulo porque tiene 90 grados");
+                }
             }else{
                 System.out.println("\nNo cumple con un triangulo");
             }
