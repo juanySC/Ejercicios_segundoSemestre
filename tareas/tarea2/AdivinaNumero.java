@@ -22,12 +22,11 @@ public class AdivinaNumero {
             //comparo
             if(numero == numeroSecreto){
                 System.out.println("Acertaste! el numero era :" + numeroSecreto);
-            } else if (numero > numeroSecreto) {
+            } else if ((numero > numeroSecreto)  || (numero < numeroSecreto)) {
                 int margen = 10;
                 int min = Math.max(1, numeroSecreto - margen);
                 int max = Math.min(100, numeroSecreto + margen);
                 System.out.println("Pista: el número esta entre "+min+" y "+max);
-
             } else{
                 System.out.println("Terminaste tus intentos! suerte para la proxima");
             }
