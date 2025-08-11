@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class PutuacionVideojuego {
 
     /** insertionSort clasifica desde el mayor al menor**/
-    static void insertionSort(int[] puntuacion, int numero) {
+    public static void insertionSort(int[] puntuacion, int numero) {
         for (int i = 1; i < numero; i++) {
             int llave = puntuacion[i], j = i - 1;
             while (j >= 0 && puntuacion[j] < llave) {
@@ -18,19 +18,17 @@ public class PutuacionVideojuego {
     }
 
     /** buscar las puntuaciones mas altas para ponerlos en el top5**/
-    static int buscar(int[] puntuacion, int valor, int numero) {
+    public static int buscar(int[] puntuacion, int valor, int numero) {
         for (int i = 0; i < numero; i++) if (puntuacion[i] == valor) return i;
         return -1;
     }
 
-    public static void main(String[] args) {
+    public static void ingreso(){
         Scanner sc = new Scanner(System.in);
         int[] puntuaciones = new int[100];
         int n = 0, val;
-        String continuar;
 
-        do {
-            while (true) {
+        while (true) {
             System.out.print("Ingresa puntuación (-1 para terminar): ");
             val = sc.nextInt();
             if (val == -1) break;
@@ -45,6 +43,17 @@ public class PutuacionVideojuego {
         val = sc.nextInt();
         int pos = buscar(puntuaciones, val, n);
         System.out.println(pos != -1 ? "Posición: " + pos : "No encontrada");
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String continuar;
+
+        System.out.println("\nEste programa recibe puntuaciones y los clasifica");
+
+        do {
+            ingreso();
 
             //le pregunto al usuario si desea 
             System.out.println("\n¿Deseas repetir el programa? s/n");
