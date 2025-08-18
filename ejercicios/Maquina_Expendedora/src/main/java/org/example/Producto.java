@@ -55,13 +55,13 @@ public class Producto {
         return false;
     }
 
-        public static int venderUna() {
-           if (this.stock){
+        public void venderUna() {
+           if (stock >0){
                stock --;
            }
     }
 
-        public static int reponer(int cantidad){
+        public void reponer(int cantidad){
             this.stock += 1;
     }
 
