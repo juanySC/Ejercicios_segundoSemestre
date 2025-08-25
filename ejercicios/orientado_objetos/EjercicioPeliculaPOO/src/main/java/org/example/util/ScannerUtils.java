@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ScannerUtils {
 
     //para preguntar datos
-    public static Scanner scanner = new Scanner(System.in);
+    public static final Scanner scanner = new Scanner(System.in);
 
     /**capturarTexto nos ayudam a recuperar la informacion dada
      *@param mensaje me devuelve el contenido de este **/
@@ -15,7 +15,7 @@ public class ScannerUtils {
         return scanner.nextLine();
     }
 
-    /**capturarNumero nos ayudam a capturar solo los numeros eneteros
+    /**capturarNumero nos ayudam a capturar solo los numeros enteros
      *@param mensaje me devuelve el contenido de este **/
     public static int  capturarNumero (String mensaje){
         System.out.println(mensaje + ":");
@@ -24,7 +24,7 @@ public class ScannerUtils {
         return dato;
     }
 
-    /**capturarDecimal nos ayudam a recuperar la informacion dada
+    /**capturarDecimal nos ayudam a recuperar informacion de los numeros con decimales
      *@param mensaje me devuelve el contenido de este **/
     public static double capturarDecimal (String mensaje){
         System.out.println(mensaje + ":");
