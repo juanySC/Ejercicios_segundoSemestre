@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.pelicula.Pelicula;
+import org.example.util.ScannerUtils;
 import org.example.utilidades.Usuario;
 
 import java.time.LocalDate;
@@ -27,10 +28,16 @@ public class Main {
         //mostrar la ficha tecnica
         System.out.println(pocoyoPelicula.obtenerFichaTecnica());
 
-        long duracionLong = pocoyoPelicula.duracion;
+        /*  long duracionLong = pocoyoPelicula.duracion;
         //casteao = conversion
         int calificacionInt = (int)pocoyoPelicula.calificacion;
-        System.out.println(duracionLong +" -------- " +calificacionInt);
+        System.out.println(duracionLong +" -------- " +calificacionInt);*/
+
+
+        //ahora llamandopero por metodos estaticos
+        String nombre = ScannerUtils.capturarTexto("Spiderman");
+        
+        //------------------------Usuario----------------------------
 
         //instanciar usuario
         Usuario usuario = new Usuario();
