@@ -33,13 +33,28 @@ public class Main {
         int calificacionInt = (int)pocoyoPelicula.calificacion;
         System.out.println(duracionLong +" -------- " +calificacionInt);*/
 
+        //----------------------Otra pelicula METOOD ESTATICO ----------------------------
 
         //ahora llamandopero por metodos estaticos
-        String nombre = ScannerUtils.capturarTexto("Spiderman");
-        
+        String nombre = ScannerUtils.capturarTexto("Nombre de pelicula");
+        String genero = ScannerUtils.capturarTexto("Género del contenido");
+        int duracion = ScannerUtils.capturarNumero("Duración del contenido");
+        double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
+
+        Pelicula pelicula2 = new Pelicula();
+
+        pelicula2.titulo = nombre;
+        pelicula2.fechaEstreno = LocalDate.of(2018, 8, 14);
+        pelicula2.genero = genero;
+        pelicula2.calificar(calificacion);
+        pelicula2.duracion = duracion;
+
+        //mostrando todo
+        System.out.println(pelicula2.obtenerFichaTecnica());
+
         //------------------------Usuario----------------------------
 
-        //instanciar usuario
+        /*//instanciar usuario
         Usuario usuario = new Usuario();
         usuario.nombre = "Fredy";
         usuario.fechaResgistro = LocalDateTime.of(2025, 12, 24, 17, 12, 00);
@@ -48,7 +63,7 @@ public class Main {
         System.out.println("\n");
         System.out.println(usuario.fechaResgistro);
 
-        usuario.ver(pocoyoPelicula);
+        usuario.ver(pocoyoPelicula);*/
 
     }
 }
