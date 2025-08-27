@@ -27,4 +27,25 @@ public class Plataforma {
         //add me sirve agregar un elemento al contenido
         this.contenido.add(elemento);
     }
+    /**
+     * mostrarTitulos nos ayuda a mostrar el array y recorre para mostrar cada uno**/
+    public void mostrarTitulos(){
+        for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
+            System.out.println(pelicula.getTitulo());
+        }
+
+        //for de manera convencional
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public List<Pelicula> getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(List<Pelicula> contenido) {
+        this.contenido = contenido;
+    }
 }
