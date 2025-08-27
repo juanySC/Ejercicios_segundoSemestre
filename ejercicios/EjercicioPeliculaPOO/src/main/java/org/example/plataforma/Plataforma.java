@@ -27,6 +27,12 @@ public class Plataforma {
         //add me sirve agregar un elemento al contenido
         this.contenido.add(elemento);
     }
+
+    /**eliminar: nos ayuda a eliminar peliculas del listado**/
+    public void eliminar(Pelicula pelicula){
+        this.contenido.remove(pelicula);
+    }
+
     /**
      * mostrarTitulos nos ayuda a mostrar el array y recorre para mostrar cada uno**/
     public void mostrarTitulos(){

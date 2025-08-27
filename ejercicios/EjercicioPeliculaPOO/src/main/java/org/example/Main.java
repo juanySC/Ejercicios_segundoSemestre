@@ -26,13 +26,17 @@ public class Main {
         double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
 
         Pelicula pelicula2 = new Pelicula(nombre, duracion, genero, calificacion);
+        Pelicula pelicula1 = new Pelicula(nombre, duracion, genero, calificacion);
+
+        plataforma.agregar(pelicula1);
         plataforma.agregar(pelicula2); //eso hara que se vaya a mi arraylist para que se cree la lista
         System.out.println("Numero de elementos en la plataforma " + plataforma.getContenido().size()); //deme la lista y obtengo el tamaño del contenido
 
+        plataforma.eliminar(pelicula1);
         //pelicula2.calificar(calificacion);
         //mostrando todo
        // System.out.println(pelicula2.obtenerFichaTecnica());
 
-
+        plataforma.mostrarTitulos(); //para que me muestre el contenido de las platadormas
     }
 }
