@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 //NO primitivos se comportan como objetos
 public class Pelicula {
-    //construir
-    public String titulo;
-    public String descripcion;
-    public int duracion; // cuanto dura en minutos
-    public String genero;
-    public LocalDate fechaEstreno;
-    public double calificacion;
-    public boolean disponible;
+    //los atributos solo se pueden modificar por medio de metodos
+    private String titulo;
+    private String descripcion;
+    private int duracion; // cuanto dura en minutos
+    private String genero;
+    private LocalDate fechaEstreno;
+    private double calificacion;
+    private boolean disponible;
 
     // metodo y no retorna nada
     public Pelicula(String titulo, int duracion, String genero, double calificacion){
@@ -52,8 +52,54 @@ public class Pelicula {
         }
     }
 
+    //getters and setters
     public boolean esPopular(){
         //solo si la calificacion es mayor a 4 entonces es true, de caso contrario no
         return this.calificacion >= 4;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+
+    public LocalDate getFechaEstreno() {
+        return fechaEstreno;
+    }
+
+    public double getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(double calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public boolean isDisponible() { //se cumple o no se cumple?
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 }

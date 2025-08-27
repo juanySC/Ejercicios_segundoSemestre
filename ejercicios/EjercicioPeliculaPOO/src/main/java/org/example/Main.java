@@ -12,12 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Pelicula reyLeon = new Pelicula("ReyLeon", 135, "animado");
-        Pelicula Harry = new Pelicula("harry", 200, "fantasia");
-         reyLeon = Harry;
-         reyLeon.titulo = "El Hobbit";
-        System.out.println("rey leon " + reyLeon.titulo);
-        System.out.println("harri"+ Harry.titulo);
+        //Pelicula reyLeon = new Pelicula("ReyLeon", 135, "animado");
+        //Pelicula Harry = new Pelicula("harry", 200, "fantasia");
+         //reyLeon = Harry;
+         //reyLeon.titulo = "El Hobbit";
+        //System.out.println("rey leon " + reyLeon.titulo);
+        //System.out.println("harri"+ Harry.titulo);
 
         System.out.println(NOMBRE_PLATAFORMA);
         System.out.println(VERSION);
