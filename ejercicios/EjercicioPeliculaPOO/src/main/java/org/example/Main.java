@@ -10,6 +10,12 @@ public class Main {
 
     public static final String NOMBRE_PLATAFORMA = "MESO VIDEO";
     public static final String VERSION = "1.0.0";
+    //para el menu
+    public static final int AGREGAR = 1;
+    public static final int MOSTRAR_TODO= 2;
+    public static final int BUSCARTITULO = 3;
+    public static final int ELIMINAR = 4;
+    public static final int SALIR = 5;
 
     public static void main(String[] args) {
 
@@ -18,15 +24,53 @@ public class Main {
 
         System.out.println(NOMBRE_PLATAFORMA + "V"+VERSION);
         cargarPeliculas(plataforma);
-        plataforma.mostrarTitulos();
+        //plataforma.mostrarTitulos();
+
+        while (true){
+            //hasta que
+            int opcionElegida = ScannerUtils.capturarNumero("""
+                    Ingrese una de las siguientes opciones
+                    1. Agregar contenido
+                    2. Mostrar todo
+                    3. Buscar titulo
+                    4. Eliminar
+                    5. Salir
+                    """);
+
+            switch (opcionElegida){
+                case AGREGAR-> {
+                    String nombre = ScannerUtils.capturarTexto("Nombre de pelicula");
+                    String genero = ScannerUtils.capturarTexto("Género del contenido");
+                    int duracion = ScannerUtils.capturarNumero("Duración del contenido");
+                    double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
+
+                    plataforma.agregar(new Pelicula(nombre, duracion, genero, calificacion));
+                }
+                case MOSTRAR_TODO -> {
+                    plataforma.mostrarTitulos();
+                }
+                case BUSCARTITULO -> {
+                    String nombreBuscado = ScannerUtils.capturarTexto("Ingrese el titulo  a buscar");
+
+                    Pelicula peliculaEcontrada = plataforma.buscarPorTitulo(nombreBuscado);
+
+                    //validacion si lo encuentra nos imprima el contenid
+                    if (peliculaEcontrada != null){
+                        System.out.println(peliculaEcontrada.obtenerFichaTecnica());
+                    }else {
+                        System.out.println(peliculaEcontrada + "Pelicula no encontrada en la plataforma");
+                    }
+                }
+                case ELIMINAR -> {
+
+                }
+            }
+        }
 
         //----------------------Otra pelicula METOOD ESTATICO ----------------------------
 
         //ahora llamandopero por metodos estaticos
-        String nombre = ScannerUtils.capturarTexto("Nombre de pelicula");
-        String genero = ScannerUtils.capturarTexto("Género del contenido");
-        int duracion = ScannerUtils.capturarNumero("Duración del contenido");
-        double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
+
 
         Pelicula pelicula2 = new Pelicula(nombre, duracion, genero);
         Pelicula pelicula1 = new Pelicula(nombre, duracion, genero);
@@ -43,7 +87,7 @@ public class Main {
         plataforma.mostrarTitulos(); //para que me muestre el contenido de las platadormas
     }
 
-    /**cargarPelicula solo puede usarse en esta clase main**/
+    /**cargarPelicula solo puede usarse en esta clase main, SIMULA UNA BASE DEDATOS**/
     private static  void cargarPeliculas(Plataforma plataforma){
         //ouedo pasarle el objeto directamente
         plataforma.agregar(new Pelicula("Shrek", 90, "animado"));

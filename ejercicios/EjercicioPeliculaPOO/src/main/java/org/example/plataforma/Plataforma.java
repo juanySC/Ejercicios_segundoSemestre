@@ -40,8 +40,27 @@ public class Plataforma {
             System.out.println(pelicula.getTitulo());
         }
 
-        //for de manera convencional
     }
+
+    /**
+     * buscarPorTitulo compracion del titulo que ya tengo con el que ya se tiene como referencia ,
+     * retorna el titulo o no**/
+    public Pelicula buscarPorTitulo (String titulo){
+        for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
+            //busqueda
+            if (pelicula.getTitulo().equalsIgnoreCase(titulo)){ //si esto es verdadero me regresa la pelicula
+            // System.out.println(pelicula.getTitulo());
+                return pelicula;
+            }
+        }
+        return null; //retorna un vacio
+    }
+    /*public void mostrarTitulos2(){
+        for (int i = 0; i < contenido.size(); i++) {
+            Pelicula pelicula = contenido.get(i); //me va recoriiendo y obteniendo los titulos
+            System.out.println(pelicula.getTitulo());
+        }
+    }*/
 
     public String getNombre() {
         return nombre;
