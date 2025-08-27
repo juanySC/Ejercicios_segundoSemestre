@@ -44,7 +44,7 @@ public class Main {
                     int duracion = ScannerUtils.capturarNumero("Duración del contenido");
                     double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
 
-                    plataforma.agregar(new Pelicula(nombre, duracion, genero, calificacion));
+                    plataforma.agregar(new Pelicula(nombre, duracion, genero));
                 }
                 case MOSTRAR_TODO -> {
                     plataforma.mostrarTitulos();
@@ -62,29 +62,22 @@ public class Main {
                     }
                 }
                 case ELIMINAR -> {
+                    String nombreAEliminar = ScannerUtils.capturarTexto("Nombre del titulo a eliminar");
 
+                    //guardar una pelicula
+                    Pelicula contenido = plataforma.buscarPorTitulo(nombreAEliminar);
+
+                    if (contenido!= null){
+                        plataforma.eliminar(contenido);
+                        System.out.println(nombreAEliminar + "eliminado");
+                    } else {
+                        System.out.println("No existe dentro de la plataforma");
+                    }
                 }
+                case SALIR -> System.exit(0);
             }
         }
 
-        //----------------------Otra pelicula METOOD ESTATICO ----------------------------
-
-        //ahora llamandopero por metodos estaticos
-
-
-        Pelicula pelicula2 = new Pelicula(nombre, duracion, genero);
-        Pelicula pelicula1 = new Pelicula(nombre, duracion, genero);
-
-        plataforma.agregar(pelicula1);
-        plataforma.agregar(pelicula2); //eso hara que se vaya a mi arraylist para que se cree la lista
-        System.out.println("Numero de elementos en la plataforma " + plataforma.getContenido().size()); //deme la lista y obtengo el tamaño del contenido
-
-        plataforma.eliminar(pelicula1);
-        //pelicula2.calificar(calificacion);
-        //mostrando todo
-       // System.out.println(pelicula2.obtenerFichaTecnica());
-
-        plataforma.mostrarTitulos(); //para que me muestre el contenido de las platadormas
     }
 
     /**cargarPelicula solo puede usarse en esta clase main, SIMULA UNA BASE DEDATOS**/
@@ -141,6 +134,7 @@ public class Main {
         plataforma.agregar(new Pelicula("Logan", 137, "acción"));
         plataforma.agregar(new Pelicula("Harry Potter y la Piedra Filosofal", 152, "fantasía"));
         plataforma.agregar(new Pelicula("El Señor de los Anillos: La Comunidad del Anillo", 178, "fantasía"));
+
 
 
     }
