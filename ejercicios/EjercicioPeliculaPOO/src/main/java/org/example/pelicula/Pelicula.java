@@ -14,7 +14,7 @@ public class Pelicula {
     private boolean disponible;
 
     // metodo y no retorna nada
-    public Pelicula(String titulo, int duracion, String genero, double calificacion){
+    public Pelicula(String titulo, int duracion, String genero){
         this.titulo = titulo;
         this.duracion = duracion;
         this.genero = genero;
