@@ -1,17 +1,35 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Crear máquina
+        MaquinaExpendedora maquina = new MaquinaExpendedora();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Crear productos
+        Producto p1 = new Producto("A1", "Coca-Cola", 10.0, 5);
+        Producto p2 = new Producto("B2", "Seven up", 8.0, 3);
+        Producto p3 = new Producto("C3", "Fanta naranja", 5.0, 10);
+
+        // Cargar productos
+        maquina.agregarProducto(p1);
+        maquina.agregarProducto(p2);
+        maquina.agregarProducto(p3);
+
+        // Mostrar catálogo
+        maquina.listarProductos();
+
+        // Simulación de compras
+        maquina.insertarDinero(20);
+        System.out.println(maquina.seleccionar("A1")); 
+        System.out.println(maquina.seleccionar("B2")); 
+        System.out.println(maquina.seleccionar("B2")); 
+        System.out.println(maquina.seleccionar("B2")); 
+        System.out.println(maquina.seleccionar("B2")); 
+
+        // Ver cambio
+        System.out.println("Cambio devuelto: Q" + maquina.devolverCambio());
+
+        // Ventas totales
+        System.out.println("Ventas totales: Q" + maquina.getTotalVentas());
     }
 }

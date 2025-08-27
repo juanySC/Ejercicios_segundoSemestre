@@ -1,78 +1,45 @@
 package org.example;
 
 public class Producto {
+    public String codigo; // inmutable
+    public String nombre;
+    public double precio;
+    public int stock;
 
-        //atributos
-        public String codigo;
-        public String nombre;
-        public double precio;
-        public int stock;
-
-
-    //creando mi constructor
-        Producto(String codigo, String nombre, double precio, int stock){
-            this.codigo = codigo;
-            this.nombre = nombre;
-            this.precio = precio;
-            this.stock = stock;
-        }
-
-        //getters and setters
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
+    // Constructor
+    public Producto(String codigo, String nombre, double precio, int stock) {
         this.codigo = codigo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
         this.stock = stock;
     }
 
-        //metodos
-        public static boolean hayStock() {
+    // Métodos
+    public boolean hayStock() {
+        return stock > 0;
+    }
+
+    public boolean venderUna() {
+        if (hayStock()) {
+            stock--;
+            return true;
+        }
         return false;
     }
 
-        public void venderUna() {
-           if (stock >0){
-               stock --;
-           }
+    public void reponer(int cant) {
+        stock += cant;
     }
 
-        public void reponer(int cantidad){
-            this.stock += 1;
-    }
+    // Getters
+    public String getCodigo() { return codigo; }
+    public String getNombre() { return nombre; }
+    public double getPrecio() { return precio; }
+    public int getStock() { return stock; }
 
+    // Representación en texto
     @Override
     public String toString() {
-        return "Producto{" +
-                "codigo='" + codigo + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                ", stock=" + stock +
-                '}';
+        return codigo + " - " + nombre + " (Q" + precio + ") Stock: " + stock;
     }
-
-    }
+}
