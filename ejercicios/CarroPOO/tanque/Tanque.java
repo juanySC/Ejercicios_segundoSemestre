@@ -29,22 +29,32 @@ public class Tanque {
     public double recargar(double litros){
         if (litros <= 0) return 0; //porque no tiene sentido recargar 0 o valores negativos
         //me ayudara a saber si tengo o no espacio disponible
-        double espacioDisponible = capacidadLitros - nivelLitros;
-        if (litros <=espacioDisponible ){
-            nivelLitros = nivelLitros + litros;
-        }else{
+        double espacioDisponible = this.capacidadLitros - this.nivelLitros;
+        double recargoEfectivo = 0;
+
+        if (litros > espacioDisponible ){
             //me da la oportunidad de solo recargar el espacio disponible
-            nivelLitros = capacidadLitros; 
+            recargoEfectivo = espacioDisponible;
+        } else{
+            recargoEfectivo = litros;
         }
         
         //actualizo el nivel de litros
-        nivelLitros = nivelLitros + litros;
+        this.nivelLitros = this.nivelLitros + recargoEfectivo;
 
-        return litros; //retorno los litros que recargue
+        return recargoEfectivo; //retorno los litros que recargue
     }
 
     public void consumir(double litros){
-
+        if (litros <= 0) return; //porque no tiene sentido consumir si es menos o igual a 0
+        //verifico si hay suficiente combustible
+        if (this.nivelLitros > litros){ 
+            //si tengo suficiente litro entonces puedo consumir los litros que deseo
+            this.nivelLitros = nivelLitros - litros;
+        } else{
+            //le mando un mensaje que no hay suficiente combustible
+            throw new IllegalArgumentException("No hay suficiente combustible en el tanque");
+        }
     }
         
     //getters y setters
