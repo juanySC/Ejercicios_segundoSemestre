@@ -52,7 +52,10 @@ public class Tanque {
             //si tengo suficiente litro entonces puedo consumir los litros que deseo
             this.nivelLitros = nivelLitros - litros;
         } else{
-            //le mando un mensaje que no hay suficiente combustible
+            /*throw se usa para lanzar una excepción. Una excepción es como una
+             señal de error que interrumpe la ejecución normal del programa y avisa 
+             de que algo salió mal.
+             IllegalArgumentException = argumento ilegal o invalido*/
             throw new IllegalArgumentException("No hay suficiente combustible en el tanque");
         }
     }
