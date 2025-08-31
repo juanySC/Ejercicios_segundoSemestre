@@ -38,5 +38,5 @@ public class Motor {
     public double getEficienciaKmL(){
         return this.eficienciaKmL;
     }
-    //toString
+   
 }
