@@ -29,8 +29,11 @@ public class GestorTareas {
      * @return El objeto Tarea creado si la operación es exitosa, o null si falla.
      */
     public Tarea crearTarea(String titulo, String descripcion){
-
-        if (titulo == null) {
+        //1.- Crea una nueva cadena de texto a partir de la original, pero eliminando 
+        //todos los espacios en blanco que pueda tener al principio y al final. 
+        //2.-  Este método comprueba si la cadena de texto está vacía después de que se eliminaron los espacios
+        // devuelve un true
+        if (titulo == null || titulo.trim().isEmpty()) {
             ultimoError = "No se puede crear la tarea sin el titulo";
             return null;//no me devuelve nada
         } 
