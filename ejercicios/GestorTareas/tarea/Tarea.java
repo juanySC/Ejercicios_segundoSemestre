@@ -41,6 +41,10 @@ public class Tarea {
         return id;
     }
 
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getTitulo() {
         return titulo;
     }
