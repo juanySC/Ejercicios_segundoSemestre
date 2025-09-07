@@ -83,10 +83,82 @@ public class GestorTareas {
        return false;
     }
 
+    /**completarTarea recorre el listado y me lo muestra, llamada al 
+     * metodo marcarCompleta de la clase Tarea**/
+    public boolean completarTarea(String id){
+        Tarea completado = buscarTarea(id);
+        if (completado != null) {
+           completado.marcarCompleta(); //llamo a mi metodo de tarea
+           return true;
+        }
+
+        return false; //no encontro la tarea
+    }
+
+    /**anternarEstado recorre el listado y me lo muestra, llamada al 
+     * metodo alternarEstado de la clase Tarea**/
+    public boolean alternarEstado(String id){
+        Tarea alternar = buscarTarea(id);
+        if (alternar != null) {
+            alternar.alternarEstado(); //llamo a mi metodo de tarea
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**listarTarea recorre el listado y me lo muestra**/
     public void listarTarea(){
-        
+        for (Tarea tarea : this.tareas) {
+            System.out.println(tarea.toString());
+        }
+    }
+
+    /**listarPendiente recorre el listado y me lo muestra**/
+    public void listarPendiente(){
+        for (Tarea tarea : this.tareas) {
+            if (tarea.isCompletada() == false) {
+                System.out.println(tarea.toString());
+            }
+           
+        }
+    }
+
+    /**listarCompletadas recorre el listado y me lo muestra**/
+    public void listarCompletadas(){
+        for (Tarea tarea : this.tareas) {
+            if (tarea.isCompletada() == true) {
+                System.out.println(tarea.toString());
+            }
+           
+        }
     }
 
     //getters and setters
+     public List<Tarea> getTareas() {
+        return tareas;
+    }
 
+    public void setTareas(List<Tarea> tareas) {
+        this.tareas = tareas;
+    }
+
+    public int getContadorId() {
+        return contadorId;
+    }
+
+    public void setContadorId(int contadorId) {
+        this.contadorId = contadorId;
+    }
+
+    public String getUltimoError() {
+        return ultimoError;
+    }
+
+    public void setUltimoError(String ultimoError) {
+        this.ultimoError = ultimoError;
+    }
+
+    
 }
