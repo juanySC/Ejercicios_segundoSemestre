@@ -8,9 +8,9 @@ public class Mesa {
 
     //constructor
 
-    public Mesa(int capacidad, String id) {
-        this.capacidad = capacidad;
+    public Mesa(String id,int capacidad) {
         this.id = id;
+        this.capacidad = capacidad;
     }
     //metodos
     //getters and setters
