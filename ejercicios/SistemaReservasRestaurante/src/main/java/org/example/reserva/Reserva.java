@@ -14,16 +14,16 @@ public class Reserva {
     private Mesa mesa;
     private LocalDateTime fechaHoraInicio;
     private int minutos;
-    private int tamañoGrupo;
+    private int tamanioGrupo;
 
     //constructor
 
-    public Reserva(Cliente cliente, Mesa mesa, LocalDateTime fechaHoraInicio, int minutos, int tamañoGrupo) {
+    public Reserva(Cliente cliente, Mesa mesa, LocalDateTime fechaHoraInicio, int minutos, int tamanioGrupo) {
         this.cliente = cliente;
         this.mesa = mesa;
         this.fechaHoraInicio = fechaHoraInicio;
         this.minutos = minutos;
-        this.tamañoGrupo = tamañoGrupo;
+        this.tamanioGrupo = tamanioGrupo;
     }
 
     //metodos
@@ -69,12 +69,12 @@ public class Reserva {
         this.minutos = minutos;
     }
 
-    public int getTamañoGrupo() {
-        return tamañoGrupo;
+    public int getTamanioGrupo() {
+        return tamanioGrupo;
     }
 
-    public void setTamañoGrupo(int tamañoGrupo) {
-        this.tamañoGrupo = tamañoGrupo;
+    public void setTamanioGrupo(int tamanioGrupo) {
+        this.tamanioGrupo = tamanioGrupo;
     }
 
 
@@ -88,7 +88,7 @@ public class Reserva {
                 ", mesa=" + mesa +
                 ", fechaHoraInicio=" + fechaHoraInicio +
                 ", minutos=" + minutos +
-                ", tamañoGrupo=" + tamañoGrupo +
+                ", tamañoGrupo=" + tamanioGrupo +
                 '}';
     }
 }
