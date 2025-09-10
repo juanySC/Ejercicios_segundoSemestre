@@ -11,9 +11,15 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class SumarRestarDias {
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String continuar;
+        //variable
+        final int DIASEXTRA = 10;
+        final int DIASATRAS = 15;
+
         //el tipo de formato que quiero que reciba la fecha, en este caso el año va primero
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -32,15 +38,13 @@ public class SumarRestarDias {
             System.out.println("La fecha uno ha sido ingresada correcta: "+conversion);
 
             //le sumo a la fecha +10
-                int diasExtras = 10;
                 //plusDays nos siver para sumarle  traves de un int los dias a la fecha
-                LocalDate fechaFutura = conversion.plusDays(diasExtras);
-                System.out.println("La fecha actual dentro de 15 días es: "+ fechaFutura);
+                LocalDate fechaFutura = conversion.plusDays(DIASEXTRA);
+                System.out.println("\nLa fecha actual dentro de 15 días es: "+ fechaFutura);
 
                 //ahora hago la resta de fechas -15
-                int diasAtras = 15;
                 //minusDays nos sirve para restarle a traves de un int los dias a la fecha
-                LocalDate fechaPasada = conversion.minusDays(diasAtras);
+                LocalDate fechaPasada = conversion.minusDays(DIASATRAS);
                 System.out.println("La fecha pasada de 15 días es: "+fechaPasada);
 
 
@@ -50,9 +54,9 @@ public class SumarRestarDias {
             }
 
 
-
-            System.out.println("¿Deseas ingresar otra fecha? s/n");
+            System.out.println("\n¿Deseas ingresar otra fecha? s/n");
             continuar = sc.nextLine();
         } while (continuar.equalsIgnoreCase("s"));
+        sc.close();
     }
 }
