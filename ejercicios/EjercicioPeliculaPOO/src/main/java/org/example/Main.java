@@ -67,16 +67,16 @@ public class Main {
                     }
                 }
                 case BUSCAR_POR_GENERO -> {
-                    String generoBuscado = ScannerUtils.capturarTexto("Genero del contenido a buscr: ");
+                    String generoBuscado = ScannerUtils.capturarTexto("Genero del contenido a buscar: ");
                    //devuelve la lista o sea lo imprime                            //busca el genero que se busca
                     List<Pelicula> contenidoPorGenero = plataforma.buscarPorGenero(generoBuscado);
                     //imprimo
                     //10 peliculas enocntradas para el genero accion
-                    System.out.println(contenidoPorGenero.size() + "encontrados para el genero: "+ generoBuscado);
+                    System.out.println("\n"+ contenidoPorGenero.size() + "encontrados para el genero: "+ generoBuscado);
 
                     //recorro
                     contenidoPorGenero.forEach((Pelicula contenido)
-                            -> System.out.println(contenido.obtenerFichaTecnica()));
+                            -> System.out.println(contenido.obtenerFichaTecnica() + " \n"));
                 }
                 case ELIMINAR -> {
                     String nombreAEliminar = ScannerUtils.capturarTexto("Nombre del titulo a eliminar");
