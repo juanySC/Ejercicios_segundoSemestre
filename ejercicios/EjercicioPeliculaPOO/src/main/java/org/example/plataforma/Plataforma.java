@@ -68,6 +68,17 @@ public class Plataforma {
 
 
     }
+
+    /** buscarPorGenero nueva funcion para buscar peliculas por genero
+     * devuelve un listado de peliculas
+     * @param genero nos ayudara a comparar los tipos de genero**/
+    public List<Pelicula> buscarPorGenero(String genero){
+
+        return contenido.stream().filter((Pelicula contenido)
+            -> contenido.getGenero().equalsIgnoreCase(genero))
+                .toList(); //regesa un listado
+    }
+
     /*public void mostrarTitulos2(){
         for (int i = 0; i < contenido.size(); i++) {
             Pelicula pelicula = contenido.get(i); //me va recoriiendo y obteniendo los titulos

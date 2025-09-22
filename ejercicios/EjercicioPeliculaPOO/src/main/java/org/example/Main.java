@@ -4,6 +4,8 @@ import org.example.pelicula.Pelicula;
 import org.example.plataforma.Plataforma;
 import org.example.util.ScannerUtils;
 
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -14,8 +16,10 @@ public class Main {
     public static final int AGREGAR = 1;
     public static final int MOSTRAR_TODO= 2;
     public static final int BUSCARTITULO = 3;
-    public static final int ELIMINAR = 4;
-    public static final int SALIR = 5;
+    //nuevo
+    public static final int BUSCAR_POR_GENERO = 4;
+    public static final int ELIMINAR = 8;
+    public static final int SALIR = 9;
 
     public static void main(String[] args) {
 
@@ -33,8 +37,9 @@ public class Main {
                     1. Agregar contenido
                     2. Mostrar todo
                     3. Buscar titulo
-                    4. Eliminar
-                    5. Salir
+                    4. Buscar por titutlo listado
+                    5. Eliminar
+                    6. Salir
                     """);
 
             switch (opcionElegida){
@@ -60,6 +65,18 @@ public class Main {
                     }else {
                         System.out.println(peliculaEcontrada + "Pelicula no encontrada en la plataforma");
                     }
+                }
+                case BUSCAR_POR_GENERO -> {
+                    String generoBuscado = ScannerUtils.capturarTexto("Genero del contenido a buscr: ");
+                   //devuelve la lista o sea lo imprime                            //busca el genero que se busca
+                    List<Pelicula> contenidoPorGenero = plataforma.buscarPorGenero(generoBuscado);
+                    //imprimo
+                    //10 peliculas enocntradas para el genero accion
+                    System.out.println(contenidoPorGenero.size() + "encontrados para el genero: "+ generoBuscado);
+
+                    //recorro
+                    contenidoPorGenero.forEach((Pelicula contenido)
+                            -> System.out.println(contenido.obtenerFichaTecnica()));
                 }
                 case ELIMINAR -> {
                     String nombreAEliminar = ScannerUtils.capturarTexto("Nombre del titulo a eliminar");
