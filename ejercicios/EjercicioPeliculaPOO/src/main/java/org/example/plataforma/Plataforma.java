@@ -36,17 +36,20 @@ public class Plataforma {
     /**
      * mostrarTitulos nos ayuda a mostrar el array y recorre para mostrar cada uno**/
     public void mostrarTitulos(){
-        for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
+       /* for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
             System.out.println(pelicula.getTitulo());
-        }
+        }*/
 
+        //for each
+         this.contenido.forEach((Pelicula contenido)
+                 -> System.out.println(contenido.getTitulo()));
     }
 
     /**
      * buscarPorTitulo compracion del titulo que ya tengo con el que ya se tiene como referencia ,
      * retorna el titulo o no**/
     public Pelicula buscarPorTitulo (String titulo){
-        for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
+       /* for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
             //busqueda
             if (pelicula.getTitulo().equalsIgnoreCase(titulo)){ //si esto es verdadero me regresa la pelicula
             // System.out.println(pelicula.getTitulo());
@@ -54,6 +57,16 @@ public class Plataforma {
             }
         }
         return null; //retorna un vacio
+        */
+
+        //se retorna el contenid
+        //stream -> porque el contenido es una lista, ahora se trabaja como un flujo
+        return contenido.stream().filter((Pelicula contenido)
+                        -> contenido.getTitulo().equalsIgnoreCase(titulo))
+                .findFirst()
+                .orElse(null);
+
+
     }
     /*public void mostrarTitulos2(){
         for (int i = 0; i < contenido.size(); i++) {
