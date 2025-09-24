@@ -18,6 +18,7 @@ public class Main {
     public static final int BUSCARTITULO = 3;
     //nuevo
     public static final int BUSCAR_POR_GENERO = 4;
+    public static final int VER_POPULARES = 7;
     public static final int ELIMINAR = 8;
     public static final int SALIR = 9;
 
@@ -28,6 +29,10 @@ public class Main {
 
         System.out.println(NOMBRE_PLATAFORMA + "V"+VERSION);
         cargarPeliculas(plataforma);
+
+        //llamando a mi duracion de peliculas
+
+        System.out.println("Mas de: "+plataforma.getDuracion()+" minutos de contenido");
         //plataforma.mostrarTitulos();
 
         while (true){
@@ -39,7 +44,8 @@ public class Main {
                     3. Buscar titulo
                     4. Buscar por titutlo listado
                     5. Eliminar
-                    6. Salir
+                    7. Buscar populares por calificacion
+                    8. Salir
                     """);
 
             switch (opcionElegida){
@@ -49,10 +55,12 @@ public class Main {
                     int duracion = ScannerUtils.capturarNumero("Duración del contenido");
                     double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
 
-                    plataforma.agregar(new Pelicula(nombre, duracion, genero));
+                    plataforma.agregar(new Pelicula(nombre, duracion, genero, calificacion));
                 }
                 case MOSTRAR_TODO -> {
-                    plataforma.mostrarTitulos();
+                    //plataforma.mostrarTitulos();
+                    List<String> titulos = plataforma.getTitulos();
+                    titulos.forEach((String titulo) -> System.out.println(titulo) );
                 }
                 case BUSCARTITULO -> {
                     String nombreBuscado = ScannerUtils.capturarTexto("Ingrese el titulo  a buscar");
@@ -78,6 +86,13 @@ public class Main {
                     contenidoPorGenero.forEach((Pelicula contenido)
                             -> System.out.println(contenido.obtenerFichaTecnica() + " \n"));
                 }
+                case VER_POPULARES -> {
+                    //llamo a mifuncion que esta en la platadorma
+                    List<Pelicula> contenidoPopulares = plataforma.getPopulares();
+
+                    contenidoPopulares.forEach((Pelicula contenido) ->
+                            System.out.println(contenido.obtenerFichaTecnica()));
+                }
                 case ELIMINAR -> {
                     String nombreAEliminar = ScannerUtils.capturarTexto("Nombre del titulo a eliminar");
 
@@ -100,58 +115,26 @@ public class Main {
     /**cargarPelicula solo puede usarse en esta clase main, SIMULA UNA BASE DEDATOS**/
     private static  void cargarPeliculas(Plataforma plataforma){
         //ouedo pasarle el objeto directamente
-        plataforma.agregar(new Pelicula("Shrek", 90, "animado"));
-        plataforma.agregar(new Pelicula("El Rey León", 88, "animado"));
-        plataforma.agregar(new Pelicula("Titanic", 195, "drama"));
-        plataforma.agregar(new Pelicula("Avatar", 162, "ciencia ficción"));
-        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, "acción"));
-        plataforma.agregar(new Pelicula("Toy Story", 81, "animado"));
-        plataforma.agregar(new Pelicula("Forrest Gump", 142, "drama"));
-        plataforma.agregar(new Pelicula("Jurassic Park", 127, "aventura"));
-        plataforma.agregar(new Pelicula("The Matrix", 136, "ciencia ficción"));
-        plataforma.agregar(new Pelicula("Gladiador", 155, "acción"));
-        plataforma.agregar(new Pelicula("Buscando a Nemo", 100, "animado"));
-        plataforma.agregar(new Pelicula("Los Increíbles", 115, "animado"));
-        plataforma.agregar(new Pelicula("Frozen", 102, "animado"));
-        plataforma.agregar(new Pelicula("Rápidos y Furiosos 7", 137, "acción"));
-        plataforma.agregar(new Pelicula("Coco", 105, "animado"));
-        plataforma.agregar(new Pelicula("Interstellar", 169, "ciencia ficción"));
-        plataforma.agregar(new Pelicula("La La Land", 128, "musical"));
-        plataforma.agregar(new Pelicula("Pulp Fiction", 154, "crimen"));
-        plataforma.agregar(new Pelicula("El Padrino", 175, "drama"));
-        plataforma.agregar(new Pelicula("Batman: El Caballero de la Noche", 152, "acción"));
-        plataforma.agregar(new Pelicula("Up", 96, "animado"));
-        plataforma.agregar(new Pelicula("El Viaje de Chihiro", 125, "animado"));
-        plataforma.agregar(new Pelicula("Pantera Negra", 134, "acción"));
-        plataforma.agregar(new Pelicula("Deadpool", 108, "acción"));
-        plataforma.agregar(new Pelicula("Los Juegos del Hambre", 142, "aventura"));
-        plataforma.agregar(new Pelicula("El Hobbit", 169, "aventura"));
-        plataforma.agregar(new Pelicula("Piratas del Caribe", 143, "aventura"));
-        plataforma.agregar(new Pelicula("Moana", 107, "animado"));
-        plataforma.agregar(new Pelicula("El Origen", 148, "ciencia ficción"));
-        plataforma.agregar(new Pelicula("El Gran Hotel Budapest", 99, "comedia"));
-
-        plataforma.agregar(new Pelicula("Encanto", 102, "animado"));
-        plataforma.agregar(new Pelicula("Soul", 100, "animado"));
-        plataforma.agregar(new Pelicula("Luca", 95, "animado"));
-        plataforma.agregar(new Pelicula("Red", 100, "animado"));
-        plataforma.agregar(new Pelicula("La Bella y la Bestia", 84, "animado"));
-        plataforma.agregar(new Pelicula("Aladdín", 90, "animado"));
-        plataforma.agregar(new Pelicula("Cars", 117, "animado"));
-        plataforma.agregar(new Pelicula("Los Minions", 91, "animado"));
-        plataforma.agregar(new Pelicula("Madagascar", 86, "animado"));
-        plataforma.agregar(new Pelicula("Cómo Entrenar a tu Dragón", 98, "animado"));
-        plataforma.agregar(new Pelicula("Zootopia", 108, "animado"));
-        plataforma.agregar(new Pelicula("El Libro de la Selva", 106, "aventura"));
-        plataforma.agregar(new Pelicula("La Momia", 124, "aventura"));
-        plataforma.agregar(new Pelicula("Guardianes de la Galaxia", 121, "ciencia ficción"));
-        plataforma.agregar(new Pelicula("Capitán América: Civil War", 147, "acción"));
-        plataforma.agregar(new Pelicula("Doctor Strange", 115, "ciencia ficción"));
-        plataforma.agregar(new Pelicula("La Mujer Maravilla", 141, "acción"));
-        plataforma.agregar(new Pelicula("Logan", 137, "acción"));
-        plataforma.agregar(new Pelicula("Harry Potter y la Piedra Filosofal", 152, "fantasía"));
-        plataforma.agregar(new Pelicula("El Señor de los Anillos: La Comunidad del Anillo", 178, "fantasía"));
-
+        plataforma.agregar(new Pelicula("Shrek", 90, "Animado", 4.5));
+        plataforma.agregar(new Pelicula("Matrix", 136, "Ciencia ficción", 4.8));
+        plataforma.agregar(new Pelicula("Forrest Gump", 142, "Drama", 4.9));
+        plataforma.agregar(new Pelicula("Gladiador", 155, "Acción", 4.7));
+        plataforma.agregar(new Pelicula("Buscando a Nemo", 100, "Animado", 4.6));
+        plataforma.agregar(new Pelicula("Titanic", 195, "Romance", 4.3));
+        plataforma.agregar(new Pelicula("El Rey León", 88, "Animado", 4.8));
+        plataforma.agregar(new Pelicula("Interestelar", 169, "Ciencia ficción", 4.9));
+        plataforma.agregar(new Pelicula("Coco", 105, "Animado", 4.7));
+        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, "Acción", 4.6));
+        plataforma.agregar(new Pelicula("Inception", 148, "Ciencia ficción", 4.9));
+        plataforma.agregar(new Pelicula("Toy Story", 81, "Animado", 4.5));
+        plataforma.agregar(new Pelicula("Joker", 122, "Drama", 4.4));
+        plataforma.agregar(new Pelicula("Los Increíbles", 115, "Animado", 4.6));
+        plataforma.agregar(new Pelicula("Pulp Fiction", 154, "Crimen", 4.9));
+        plataforma.agregar(new Pelicula("Wall-E", 98, "Animado", 4.6));
+        plataforma.agregar(new Pelicula("La La Land", 128, "Musical", 4.3));
+        plataforma.agregar(new Pelicula("El Padrino", 175, "Crimen", 5.0));
+        plataforma.agregar(new Pelicula("Avatar", 162, "Ciencia ficción", 4.2));
+        plataforma.agregar(new Pelicula("Ratatouille", 111, "Animado", 4.7));
 
 
     }

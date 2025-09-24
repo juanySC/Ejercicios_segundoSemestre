@@ -3,6 +3,7 @@ package org.example.plataforma;
 import org.example.pelicula.Pelicula;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Plataforma {
@@ -35,15 +36,26 @@ public class Plataforma {
 
     /**
      * mostrarTitulos nos ayuda a mostrar el array y recorre para mostrar cada uno**/
-    public void mostrarTitulos(){
-       /* for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
-            System.out.println(pelicula.getTitulo());
-        }*/
+    public List<String> getTitulos(){
+        return contenido.stream().map(Pelicula::getTitulo) //clase pelicula obtengo todos los titutlo y lopaso a una lista
+                .toList();
 
-        //for each
+        /*public void mostrarTitulos(){
+        for (Pelicula pelicula: contenido){ //obtengo el titulo por el get y no directamente por el atributo
+            System.out.println(pelicula.getTitulo());
+
+            //for each
          this.contenido.forEach((Pelicula contenido)
-                 -> System.out.println(contenido.getTitulo()));
+                -> System.out.println(contenido.getTitulo()));
+        }
+
+
+      }*/
     }
+
+
+
+
 
     /**
      * buscarPorTitulo compracion del titulo que ya tengo con el que ya se tiene como referencia ,
@@ -77,6 +89,22 @@ public class Plataforma {
         return contenido.stream().filter((Pelicula contenido)
             -> contenido.getGenero().equalsIgnoreCase(genero))
                 .toList(); //regesa un listado
+    }
+
+    /**obtengo la duracion de todos los titulos**/
+    public  int getDuracion(){
+        //metodo de referencia
+        //.sum() = suma todas las duraciones de las peliulas
+        return contenido.stream().mapToInt(Pelicula::getDuracion).sum();
+    }
+
+    //ranking de pelicula
+    public List<Pelicula> getPopulares(){
+        //reverse necesitamos de la mas baja a la mas alta
+        return contenido.stream().sorted(
+                Comparator.comparingDouble(Pelicula::getCalificacion)
+                        .reversed()).
+                toList();
     }
 
     /*public void mostrarTitulos2(){

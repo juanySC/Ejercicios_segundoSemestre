@@ -7,6 +7,7 @@ public class Pelicula {
     //los atributos solo se pueden modificar por medio de metodos
     private String titulo;
     private String descripcion;
+    //para obtener xon la nueva duncion
     private int duracion; // cuanto dura en minutos
     private String genero;
     private LocalDate fechaEstreno;
@@ -14,10 +15,11 @@ public class Pelicula {
     private boolean disponible;
 
     // metodo y no retorna nada
-    public Pelicula(String titulo, int duracion, String genero){
+    public Pelicula(String titulo, int duracion, String genero, double calificacion){
         this.titulo = titulo;
         this.duracion = duracion;
         this.genero = genero;
+        this.calificacion = calificacion;
         this.fechaEstreno = LocalDate.now();
         this.disponible = false;
     }
