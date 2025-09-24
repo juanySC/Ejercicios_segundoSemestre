@@ -18,6 +18,9 @@ public class Main {
     public static final int BUSCARTITULO = 3;
     //nuevo
     public static final int BUSCAR_POR_GENERO = 4;
+    public static final int BUSCAR_POR_MAYORDURACION = 5;
+    public static final int BUSCAR_POR_MENORDURACION = 6;
+    public static  final int POPULARES_MAYORESA4 = 10;
     public static final int VER_POPULARES = 7;
     public static final int ELIMINAR = 8;
     public static final int SALIR = 9;
@@ -43,9 +46,11 @@ public class Main {
                     2. Mostrar todo
                     3. Buscar titulo
                     4. Buscar por titutlo listado
-                    5. Eliminar
+                    5, Mayor duracion
+                    6. Menor duracion
+                    8. Eliminar
                     7. Buscar populares por calificacion
-                    8. Salir
+                    9. Salir
                     """);
 
             switch (opcionElegida){
@@ -92,6 +97,17 @@ public class Main {
 
                     contenidoPopulares.forEach((Pelicula contenido) ->
                             System.out.println(contenido.obtenerFichaTecnica()));
+                } case POPULARES_MAYORESA4 -> {
+                    List<Pelicula> contenidoPopular = plataforma.getPopulares();
+                    contenidoPopular.forEach((Pelicula contenido) -> System.out.println(contenido.obtenerFichaTecnica()));
+                }
+                case BUSCAR_POR_MAYORDURACION -> {
+                    Pelicula peliculaMayorDuracion = plataforma.peliculaLarga();
+                    System.out.println(peliculaMayorDuracion != null? ("La pelicula mas larga es: " + peliculaMayorDuracion.obtenerFichaTecnica()): "No existe una pelicula con mayor duracion que el resto");
+                }
+                case BUSCAR_POR_MENORDURACION-> {
+                    Pelicula peliculaMenorDuracion = plataforma.peliculaLarga();
+                    System.out.println(peliculaMenorDuracion != null? ("La pelicula mas larga es: " + peliculaMenorDuracion.obtenerFichaTecnica()): "No existe una pelicula con mayor duracion que el resto");
                 }
                 case ELIMINAR -> {
                     String nombreAEliminar = ScannerUtils.capturarTexto("Nombre del titulo a eliminar");

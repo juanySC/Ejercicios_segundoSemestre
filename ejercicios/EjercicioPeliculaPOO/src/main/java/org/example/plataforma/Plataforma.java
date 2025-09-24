@@ -5,6 +5,7 @@ import org.example.pelicula.Pelicula;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Plataforma {
     //atributo
@@ -55,8 +56,6 @@ public class Plataforma {
 
 
 
-
-
     /**
      * buscarPorTitulo compracion del titulo que ya tengo con el que ya se tiene como referencia ,
      * retorna el titulo o no**/
@@ -98,7 +97,7 @@ public class Plataforma {
         return contenido.stream().mapToInt(Pelicula::getDuracion).sum();
     }
 
-    //ranking de pelicula
+    /**ranking de pelicula**/
     public List<Pelicula> getPopulares(){
         //reverse necesitamos de la mas baja a la mas alta
         return contenido.stream().sorted(
@@ -113,6 +112,39 @@ public class Plataforma {
             System.out.println(pelicula.getTitulo());
         }
     }*/
+
+    /*Crea dos metodos que encuentre la película más larga y
+        más corta aplicando funciones de transformación y
+        reducción*/
+
+    /**mostrarPeliculaCorta compara todas las peliculas con el metodo .max y los
+     * Comparator.comparing
+     * **/
+
+    public  Pelicula peliculaLarga(){
+        //basicamente lo compara conla funcion getDurancion y si no me devuelve vacio
+        return contenido.stream().max(Comparator.comparing(Pelicula::getDuracion)).orElse(null);
+    }
+
+    /**PeliculaCorta compara todas las peliculas con el metodo .min y los
+     * Comparator.comparing
+     * **/
+
+    public  Pelicula peliculaCorta(){
+        //basicamente lo compara conla funcion getDurancion y si no me devuelve vacio
+        return contenido.stream().min(Comparator.comparing(Pelicula::getDuracion)).orElse(null);
+    }
+
+    //Filtra las películas con calificación igual o superior a cuatro
+    //usando streams y lambdas para obtener solo las más
+    //populares
+    /**peliculaPopular compara el listado de peliculas para saber cuales son mayores a la
+     * calificacion de 4, en esto se utiliza filter que  nos ayuda a filtrar todo el contenido
+     * y recolectar la lista en la funcion esPopular de la clase Pelicula**/
+    public List<Pelicula> peliculaPopular(){
+        return contenido.stream().filter((Pelicula contenido)
+        -> contenido.esPopular()).collect(Collectors.toList());
+    }
 
     public String getNombre() {
         return nombre;
