@@ -90,14 +90,29 @@ public class Main {
     agenda.agregar(notita);
     agenda.agregar(new Nota("\nExamen de mate", "8"));
     List<Nota> listaNotas = agenda.listar(); // obtengo mi nota
+    agenda.agregar(new Nota("Examen de fisica", "3"));
+    List<Nota> listaNotas2 = agenda.listar(); // lista mas actual
 
-    System.out.println("Notas en la agenda: " + listaNotas.size());
-    for (Nota not : listaNotas) {
+    System.out.println("\nNotas en la agenda: " + listaNotas.size());
+    for (Nota not : listaNotas2) {
         System.out.println(not.toString());
-        //para mostrar el tamaño de mi agenda
-        System.out.println(agenda.listar());   
+    
     }
 
+    //trantando de eliminar un anota
+    if (agenda.eliminar("Examen de progra")) {
+        System.out.println("\nNota eliminada: Examen de progra");
+    } else {
+        System.out.println("\nNo existe ese titulo");
+    }
+
+    //Recorro de nuevo mi lista de notas
+    List<Nota> listaNotas3 = agenda.listar(); // lista mas actual
+    System.out.println("\nNotas en la agenda: " + listaNotas.size());
+        for (Nota not : listaNotas3) {
+            System.out.println(not.toString());
+    
+    }
 
     //llamo a mi menu
     menu();
