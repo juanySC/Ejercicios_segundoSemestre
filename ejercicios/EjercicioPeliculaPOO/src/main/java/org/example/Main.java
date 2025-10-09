@@ -1,9 +1,11 @@
 package org.example;
 
+import org.example.pelicula.Genero;
 import org.example.pelicula.Pelicula;
+import org.example.plataforma.Calidad;
+import org.example.plataforma.Idioma;
 import org.example.plataforma.Plataforma;
 import org.example.util.ScannerUtils;
-
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -45,22 +47,34 @@ public class Main {
                     1. Agregar contenido
                     2. Mostrar todo
                     3. Buscar titulo
-                    4. Buscar por titutlo listado
+                    4. Buscar por genero
                     5, Mayor duracion
                     6. Menor duracion
-                    8. Eliminar
                     7. Buscar populares por calificacion
+                    8. Eliminar
                     9. Salir
                     """);
 
             switch (opcionElegida){
                 case AGREGAR-> {
                     String nombre = ScannerUtils.capturarTexto("Nombre de pelicula");
-                    String genero = ScannerUtils.capturarTexto("Género del contenido");
+                    //Genero genero = Genero.valueOf(ScannerUtils.capturarTexto("Género del contenido"));
+                    Genero genero = ScannerUtils.capturarGenero("Genero del contenido");
                     int duracion = ScannerUtils.capturarNumero("Duración del contenido");
                     double calificacion = ScannerUtils.capturarDecimal("Calificacion del contenido");
+                    Idioma idioma = ScannerUtils.capturarIdioma("Idioma del contenido");
+                    Calidad calidad = ScannerUtils.capturarCalidad("Calidad del contenido ");
 
-                    plataforma.agregar(new Pelicula(nombre, duracion, genero, calificacion));
+                    //agregamos una excepcion
+                    try {
+                        plataforma.agregar(new Pelicula(nombre, duracion, genero, calificacion, idioma, calidad));
+                    } catch (Exception e){
+                        //que atrape la excepcion qu enosostos ya creamos
+
+                        //throw  new RuntimeException(e);
+                        System.out.println(e.getMessage());
+                    }
+
                 }
                 case MOSTRAR_TODO -> {
                     //plataforma.mostrarTitulos();
@@ -80,7 +94,8 @@ public class Main {
                     }
                 }
                 case BUSCAR_POR_GENERO -> {
-                    String generoBuscado = ScannerUtils.capturarTexto("Genero del contenido a buscar: ");
+                    //Genero generoBuscado = Genero.valueOf(ScannerUtils.capturarTexto("Genero del contenido a buscar: "));
+                    Genero generoBuscado = ScannerUtils.capturarGenero("Genero a buscar");
                    //devuelve la lista o sea lo imprime                            //busca el genero que se busca
                     List<Pelicula> contenidoPorGenero = plataforma.buscarPorGenero(generoBuscado);
                     //imprimo
@@ -131,26 +146,19 @@ public class Main {
     /**cargarPelicula solo puede usarse en esta clase main, SIMULA UNA BASE DEDATOS**/
     private static  void cargarPeliculas(Plataforma plataforma){
         //ouedo pasarle el objeto directamente
-        plataforma.agregar(new Pelicula("Shrek", 90, "Animado", 4.5));
-        plataforma.agregar(new Pelicula("Matrix", 136, "Ciencia ficción", 4.8));
-        plataforma.agregar(new Pelicula("Forrest Gump", 142, "Drama", 4.9));
-        plataforma.agregar(new Pelicula("Gladiador", 155, "Acción", 4.7));
-        plataforma.agregar(new Pelicula("Buscando a Nemo", 100, "Animado", 4.6));
-        plataforma.agregar(new Pelicula("Titanic", 195, "Romance", 4.3));
-        plataforma.agregar(new Pelicula("El Rey León", 88, "Animado", 4.8));
-        plataforma.agregar(new Pelicula("Interestelar", 169, "Ciencia ficción", 4.9));
-        plataforma.agregar(new Pelicula("Coco", 105, "Animado", 4.7));
-        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, "Acción", 4.6));
-        plataforma.agregar(new Pelicula("Inception", 148, "Ciencia ficción", 4.9));
-        plataforma.agregar(new Pelicula("Toy Story", 81, "Animado", 4.5));
-        plataforma.agregar(new Pelicula("Joker", 122, "Drama", 4.4));
-        plataforma.agregar(new Pelicula("Los Increíbles", 115, "Animado", 4.6));
-        plataforma.agregar(new Pelicula("Pulp Fiction", 154, "Crimen", 4.9));
-        plataforma.agregar(new Pelicula("Wall-E", 98, "Animado", 4.6));
-        plataforma.agregar(new Pelicula("La La Land", 128, "Musical", 4.3));
-        plataforma.agregar(new Pelicula("El Padrino", 175, "Crimen", 5.0));
-        plataforma.agregar(new Pelicula("Avatar", 162, "Ciencia ficción", 4.2));
-        plataforma.agregar(new Pelicula("Ratatouille", 111, "Animado", 4.7));
+        plataforma.agregar(new Pelicula("Shrek", 90, Genero.ACCCION, 4.5, Idioma.ESPANIOL, Calidad.CL_420));
+        plataforma.agregar(new Pelicula("Matrix", 136, Genero.ANIMADA,4.8, Idioma.FRANCES, Calidad.CL_1080));
+        plataforma.agregar(new Pelicula("Forrest Gump", 142, Genero.ACCCION, 4.9, Idioma.KICHE, Calidad.CL_720));
+        plataforma.agregar(new Pelicula("Gladiador", 155, Genero.ACCCION, 4.7, Idioma.ESPANIOL, Calidad.CL_720));
+        plataforma.agregar(new Pelicula("Buscando a Nemo", 100, Genero.ANIMADA, 4.6, Idioma.ESPANIOL, Calidad.CL_1080));
+        plataforma.agregar(new Pelicula("Titanic", 195, Genero.ACCCION, 4.3, Idioma.INGLES, Calidad.CL_720));
+        plataforma.agregar(new Pelicula("El Rey León", 88, Genero.ANIMADA, 4.8, Idioma.ESPANIOL, Calidad.CL_1080));
+        plataforma.agregar(new Pelicula("Interestelar", 169, Genero.CIENCIA, 4.9, Idioma.KICHE, Calidad.CL_420));
+        plataforma.agregar(new Pelicula("Coco", 105, Genero.TERROR, 4.7, Idioma.KICHE, Calidad.CL_420));
+        plataforma.agregar(new Pelicula("Avengers: Endgame", 181, Genero.ACCCION, 4.6, Idioma.FRANCES, Calidad.CL_1080));
+        plataforma.agregar(new Pelicula("Inception", 148, Genero.CIENCIA, 4.9, Idioma.INGLES, Calidad.CL_720));
+        plataforma.agregar(new Pelicula("Toy Story", 81, Genero.COMEDIA, 4.5, Idioma.INGLES, Calidad.CL_420));
+        plataforma.agregar(new Pelicula("Joker", 122, Genero.TERROR, 4.4, Idioma.FRANCES, Calidad.CL_720));
 
 
     }

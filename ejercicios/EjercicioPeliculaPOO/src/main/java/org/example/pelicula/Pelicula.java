@@ -1,5 +1,8 @@
 package org.example.pelicula;
 
+import org.example.plataforma.Calidad;
+import org.example.plataforma.Idioma;
+
 import java.time.LocalDate;
 
 //NO primitivos se comportan como objetos
@@ -9,22 +12,27 @@ public class Pelicula {
     private String descripcion;
     //para obtener xon la nueva duncion
     private int duracion; // cuanto dura en minutos
-    private String genero;
+    private Genero genero;
     private LocalDate fechaEstreno;
     private double calificacion;
     private boolean disponible;
+    private Idioma idioma;
+    private Calidad calidad;
 
     // metodo y no retorna nada
-    public Pelicula(String titulo, int duracion, String genero, double calificacion){
+    public Pelicula(String titulo, int duracion, Genero genero, double calificacion, Idioma idioma, Calidad calidad){
         this.titulo = titulo;
         this.duracion = duracion;
         this.genero = genero;
         this.calificacion = calificacion;
         this.fechaEstreno = LocalDate.now();
         this.disponible = false;
+        this.idioma =idioma;
+        this.calidad = calidad;
+
     }
 
-    public Pelicula(String titulo, int duracion, String genero, double calificacion, boolean disponible) {
+    public Pelicula(String titulo, int duracion, Genero genero, double calificacion, boolean disponible) {
         this.titulo = titulo;
         this.duracion = duracion;
         this.genero = genero;
@@ -80,7 +88,7 @@ public class Pelicula {
         this.duracion = duracion;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
@@ -103,5 +111,21 @@ public class Pelicula {
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+
+    public Idioma getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(Idioma idioma) {
+        this.idioma = idioma;
+    }
+
+    public Calidad getCalidad() {
+        return calidad;
+    }
+
+    public void setCalidad(Calidad calidad) {
+        this.calidad = calidad;
     }
 }

@@ -1,5 +1,7 @@
 package org.example.plataforma;
 
+import org.example.exception.PeliculaExistenteExcepcion;
+import org.example.pelicula.Genero;
 import org.example.pelicula.Pelicula;
 
 import java.util.ArrayList;
@@ -24,11 +26,25 @@ public class Plataforma {
 
     /**
      * agregar a una lista de la pelicula al this. contenido que le voy asignar un valor
-    *  @param  elemento me ayuda asignarle un elemento al contenido, o sea se hara una lista*/
-    public void agregar(Pelicula elemento){
+    *  @param  pelicula me ayuda asignarle un elemento al contenido, o sea se hara una lista*/
+    public void agregar(Pelicula pelicula){
+
+        //buscamos la pelicula
+        Pelicula contenido =this.buscarPorTitulo(pelicula.getTitulo());
+
+        if (contenido != null){
+            //trow se lanza una expecion
+            //funciona tambien como un return, nos saca del metodo, ya no lee
+            throw new PeliculaExistenteExcepcion(pelicula.getTitulo());
+        }
+
+
         //add me sirve agregar un elemento al contenido
-        this.contenido.add(elemento);
+        this.contenido.add(pelicula); //ya no lee esto el trow
+
     }
+
+
 
     /**eliminar: nos ayuda a eliminar peliculas del listado**/
     public void eliminar(Pelicula pelicula){
@@ -83,12 +99,33 @@ public class Plataforma {
     /** buscarPorGenero nueva funcion para buscar peliculas por genero
      * devuelve un listado de peliculas
      * @param genero nos ayudara a comparar los tipos de genero**/
-    public List<Pelicula> buscarPorGenero(String genero){
+    public List<Pelicula> buscarPorGenero(Genero genero){
 
         return contenido.stream().filter((Pelicula contenido)
-            -> contenido.getGenero().equalsIgnoreCase(genero))
+            -> contenido.getGenero().equals(genero))
                 .toList(); //regesa un listado
     }
+
+    /** buscarIdioma nueva funcion para buscar peliculas por idiomas
+     * devuelve un listado de peliculas
+     * @param idioma nos ayudara a comparar los tipos de idiomas**/
+    public List<Pelicula> buscarIdioma(Idioma idioma){
+
+        return contenido.stream().filter((Pelicula contenido)
+        -> contenido.getIdioma().equals(contenido))
+                .toList(); //regesa el listado de los idiomas
+    }
+
+    /** buscarIdioma nueva funcion para buscar peliculas por calidad
+     * devuelve un listado de peliculas
+     * @param calidad nos ayudara a comparar los tipos de calidad exitences**/
+    public List<Pelicula> buscarCalidad(Calidad calidad){
+
+        return contenido.stream().filter((Pelicula contenido)
+                        -> contenido.getCalidad().equals(contenido))
+                .toList(); //regesa el listado de los idiomas
+    }
+
 
     /**obtengo la duracion de todos los titulos**/
     public  int getDuracion(){
