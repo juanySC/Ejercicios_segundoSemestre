@@ -3,6 +3,7 @@ package org.example.plataforma;
 import org.example.exception.PeliculaExistenteExcepcion;
 import org.example.pelicula.Genero;
 import org.example.pelicula.Pelicula;
+import org.example.pelicula.ResumenContenido;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -70,7 +71,16 @@ public class Plataforma {
       }*/
     }
 
-
+    /**getResumenes obtiene algunos parametros indicados en la clase record ResumenContenido
+     * usamos la clase Resumen de contenid
+     * hace una copia en la nueva isntancia del contenido**/
+    public List<ResumenContenido> getResumenes(){
+        return contenido.stream().map(contenido-> new ResumenContenido(
+                contenido.getTitulo(),
+                        contenido.getDuracion(),
+                        contenido.getGenero()))
+                .toList();
+    }
 
     /**
      * buscarPorTitulo compracion del titulo que ya tengo con el que ya se tiene como referencia ,

@@ -10,7 +10,7 @@ public class Pelicula {
     //los atributos solo se pueden modificar por medio de metodos
     private String titulo;
     private String descripcion;
-    //para obtener xon la nueva duncion
+    //para obtener con la nueva duncion
     private int duracion; // cuanto dura en minutos
     private Genero genero;
     private LocalDate fechaEstreno;
