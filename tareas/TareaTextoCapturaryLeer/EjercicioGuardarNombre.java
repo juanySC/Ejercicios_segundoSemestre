@@ -5,18 +5,18 @@ import java.util.ArrayList;
 
 public class EjercicioGuardarNombre {
     public static void main(String[] args) {
+        //atributos
         Scanner sc = new Scanner(System.in);
-
-        //hare un blucle para que se rompa cuando se escriba FIN
         final String FIN = "FIN";
-        String continuar;
+        //creo una lista para guardar los nombres
         List<String> nombresIngresados = new ArrayList<>();
         String nombre;
         
-
+        //bienvenida e instrucciones
         System.out.println("\nHola, por favor ingresa un nombre");
         System.out.println("el texto se acaba cuando ingrese hasta que escriba FIN");
 
+        //hare un blucle para que se rompa cuando se escriba FIN
         do {
         //obteniendo los nombres
         

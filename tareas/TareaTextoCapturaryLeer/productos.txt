@@ -1,0 +1,4 @@
+laptop,4500
+celular,3800
+teclado,200
+monitor,1500
