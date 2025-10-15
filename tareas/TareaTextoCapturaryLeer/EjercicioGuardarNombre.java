@@ -14,10 +14,12 @@ public class EjercicioGuardarNombre {
         String nombre;
         
 
+        System.out.println("\nHola, por favor ingresa un nombre");
+        System.out.println("el texto se acaba cuando ingrese hasta que escriba FIN");
+
         do {
         //obteniendo los nombres
-        System.out.println("Hola, por favor ingresa un nombre");
-        System.out.println("el texto se acaba cuando ingrese hasta que escriba FIN");
+        
         nombre = sc.nextLine();
 
         if (!nombre.equalsIgnoreCase(FIN)) {
